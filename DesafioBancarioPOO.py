@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 import textwrap
 from datetime import datetime
 
-# ===================== CLASSES DE USUÁRIO =====================
 class Cliente:
     def __init__(self, nome, cpf, data_nascimento, endereco):
         self.nome = nome
@@ -14,7 +13,6 @@ class PessoaFisica(Cliente):
     def __init__(self, nome, cpf, data_nascimento, endereco):
         super().__init__(nome, cpf, data_nascimento, endereco)
 
-# ===================== CLASSES DE CONTA =====================
 class Conta:
     def __init__(self, agencia, numero, cliente):
         self.agencia = agencia
@@ -38,7 +36,7 @@ class Conta:
 class ContaCorrente(Conta):
     pass  # Aqui você pode adicionar funcionalidades específicas no futuro
 
-# ===================== HISTÓRICO =====================
+
 class Historico:
     def __init__(self):
         self.transacoes = []
@@ -56,7 +54,7 @@ class Historico:
         print(f"\nSaldo: R$ {saldo:.2f}")
         print("==========================================")
 
-# ===================== TRANSAÇÕES =====================
+
 class Transacao(ABC):
     @abstractmethod
     def registrar(self, conta):
@@ -95,7 +93,7 @@ class Saque(Transacao):
             conta.historico.adicionar(f"{self.data.strftime('%d/%m/%Y %H:%M')} - Saque: R$ {self.valor:.2f}")
             print("\n=== Saque realizado com sucesso! ===")
 
-# ===================== SISTEMA =====================
+
 def menu():
     menu = """\n
     =============== MENU ================
@@ -154,7 +152,7 @@ def selecionar_conta(contas):
     print("\n@@@ Conta inválida. @@@")
     return None
 
-# ===================== EXECUÇÃO =====================
+
 def main():
     AGENCIA = "0001"
     usuarios = []
